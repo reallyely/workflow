@@ -5,10 +5,13 @@ import SubTaskContainer from '../containers/SubTaskContainer'
 const TaskCard = ({task}) => (
 	<div>
 		<Card>
-			<CardHeader title={`Parent Task ${task.task}`} subtitle={`Type: ${task.type}`}/>
+			<CardHeader title={<strong>{task.task}</strong>} subtitle={`Type: ${task.type}`}/>
 			<CardText>
+				<p>
+					{task.description}
+				</p>
 				<ul>
-					<SubTaskContainer subTasks={task.subtasks}/>
+					<SubTaskContainer subTasks={task.subTasks}/>
 				</ul>
 			</CardText>
 		</Card>

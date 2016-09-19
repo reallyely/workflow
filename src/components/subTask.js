@@ -1,9 +1,15 @@
 import React from 'react';
+import Timer from 'material-ui/svg-icons/image/timer'
+import TimerOff from 'material-ui/svg-icons/image/timer-off'
 
-const SubTask = ({subTask}) => (
+const SubTask = ({subTasks}) => (
 	<div>
 		<ul>
-			{subtasks.map(subTask => { return (<li>subTask.subTask</li>)})}
+			{
+				subTasks.map(subTask => {
+					return (<li key={subTask.subTask}>{`${subTask.subTask}: ${subTask.type} - ${subTask.status}`} <Timer hoverColor="red"/> <TimerOff hoverColor="red"/></li>)
+				})
+			}
 		</ul>
 	</div>
 );
