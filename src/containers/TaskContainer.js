@@ -1,6 +1,6 @@
 import React from 'react'
 import TaskCard from '../components/TaskCard';
-import AppBar from 'material-ui/AppBar';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField'
 import Search from 'material-ui/svg-icons/action/search';
 
@@ -23,6 +23,7 @@ export default React.createClass({
 	filterTasks (e) {
 		const filterText = e.target.value
 		const reg = new RegExp(`\\b${filterText}\\.*\\b`, "gi")
+
 		const filtered = this.props.tasks.filter(task => {
 			return _.find(task, function(o) {
 				if (filterText) {
@@ -30,7 +31,6 @@ export default React.createClass({
 						return o.search(reg) > -1;
 					}
 				} else {
-					console.log('just pass');
 					return true;
 				}
 			})
@@ -40,28 +40,27 @@ export default React.createClass({
 			filteredTasks: filtered
 		})
 	},
-	// handleSearch(string) {
-	// 	this.setState({
-	//
-	// 	})
-	// },
 	componentWillUpdate(nextProps, nextState) {
 	},
 	render() {
 		return (
 			<div>
-				<AppBar title="Title" iconElementLeft={<span/>}>
-					<TextField
-					inputStyle={{color:"white"}}
-					floatingLabelStyle={{color:"white"}}
-					hintText={<Search style={{color:"white"}}/>}
-					fullWidth={true}
-					onChange={(e) => {this.filterTasks(e)}}
-					/>
-				</AppBar>
+				<Toolbar>
+				<ToolbarGroup style={{width:'100%'}}>
+						<TextField
+						hintText={<Search />}
+						fullWidth={true}
+						onChange={(e) => {this.filterTasks(e)}}
+						/>
+					</ToolbarGroup>
+				</Toolbar>
 				<div style={{margin:'30px', padding: '30px'}}>
 					<div>
-						{this.state.filteredTasks.map(task => {return ( <TaskCard key={task.task} task={task}/>)})}
+						{
+							this.state.filteredTasks.map(task => {
+								return ( <TaskCard key={task.task} task={task}/>)
+							})
+						}
 					</div>
 				</div>
 			</div>

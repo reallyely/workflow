@@ -2,12 +2,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React from 'react';
 import TaskContainer from './containers/TaskContainer'
 import data from './data.js'
+import DayPicker from './containers/DayPicker'
 
 const App = () => (
   <MuiThemeProvider>
-		<div>
-			<TaskContainer tasks={data} />
-		</div>
+		<DayPicker>
+			<TaskContainer tasks={data}/>
+		</DayPicker>
   </MuiThemeProvider>
 );
 
