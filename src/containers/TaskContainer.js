@@ -3,6 +3,7 @@ import TaskCard from '../components/TaskCard';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField'
 import Search from 'material-ui/svg-icons/action/search';
+
 import _ from 'lodash'
 
 export default React.createClass({

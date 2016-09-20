@@ -6,7 +6,9 @@ export default React.createClass({
 	render() {
 		return (
 			<div>
-				<SubTask subTasks={this.props.subTasks} />
+				<ul>
+					<SubTask subTasks={this.props.subTasks} />
+				</ul>
 			</div>
 		);
 	}
